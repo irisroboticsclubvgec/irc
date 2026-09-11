@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ *  DESIGN TOKENS  (Tailwind v4 @theme -> generates utilities)
+ *  Edit these to re-skin the whole site.
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Neon Black + Blue Theme */
+  --color-ink: #02040a;        /* Main background */
+  --color-ink-2: #06111f;      /* Secondary background */
+  --color-panel: #0a1628;      /* Cards/Panels */
+
+  /* Neon accents */
+  --color-brand-cyan: #00e5ff;
+  --color-brand-blue: #1e90ff;
+  --color-brand-violet: #5b7cff;
+  --color-brand-pink: #7c3aed;
+
+  --shadow-glow: 0 0 45px rgba(0, 229, 255, 0.55);
+  --shadow-glow-violet: 0 0 45px rgba(30, 144, 255, 0.45);
+}
+
+/* ------------------------------------------------------------------ *
+ *  BASE
+ * ------------------------------------------------------------------ */
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* let JS-driven / anchored scrolling clear the fixed navbar */
+:target {
+  scroll-margin-top: 6rem;
+}
+
+body {
+  margin: 0;
+  color: rgb(226 232 240);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(30, 144, 255, 0.15), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(0, 119, 255, 0.12), transparent 40%),
+    linear-gradient(180deg, #02040a 0%, #06111f 50%, #02040a 100%);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.08) 1px, transparent 1px);
+
+  background-size: 48px 48px;
+}
+
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    #00f7ff 0%,
+    #00bfff 40%,
+    #3b82f6 70%,
+    #8b5cf6 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(10, 20, 40, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  box-shadow:
+    0 0 30px rgba(0, 229, 255, 0.08),
+    inset 0 0 10px rgba(0, 229, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00e5ff, #1e90ff);
+  border-radius: 10px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: white;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#22d3ee, #a855f7);
+  border-radius: 10px;
+  border: 2px solid var(--color-ink);
+}
+
+/* ------------------------------------------------------------------ *
+ *  REUSABLE UTILITY CLASSES
+ * ------------------------------------------------------------------ */
+@utility glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility text-gradient {
+  background: linear-gradient(100deg, #67e8f9 0%, #a855f7 60%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* section title accent line */
+@utility eyebrow {
+  color: var(--color-brand-cyan);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* ------------------------------------------------------------------ *
+ *  KEYFRAMES
+ * ------------------------------------------------------------------ */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
