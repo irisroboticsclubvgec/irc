@@ -60,7 +60,7 @@ export const site = {
       "The official robotics club of VGEC — designing autonomous systems, competition robots, and the engineers who build them.",
     established: "2025",
     email: "irisroboclub@vgecg.ac.in",
-    location: "Chandkheda, Ahmedabad, Gujarat",
+    location: "E block, Vishwakarma Government Engineering College, Chandkheda, Ahmedabad",
     // BASE_URL keeps the logo path correct at any deploy sub-path
     logo: `${import.meta.env.BASE_URL}favicon.svg`,
   },
