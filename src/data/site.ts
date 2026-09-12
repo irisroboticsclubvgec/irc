@@ -83,7 +83,7 @@ export const site = {
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/iris-robotics-club-8576193b3?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      href: "https://www.linkedin.com/company/iris-robotics-club",
       icon: "linkedin",
     },
     {
