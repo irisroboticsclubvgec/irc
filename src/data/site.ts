@@ -197,7 +197,7 @@ export const site = {
     {
       name: "Kathan Patel",
       role: "Secretary",
-      image: `${import.meta.env.BASE_URL}images/team/kathan-patel.jpg`,
+      image: `${import.meta.env.BASE_URL}images/team/kathan-patel.jpeg`,
     },
     {
       name: "Ashish Thalod",
